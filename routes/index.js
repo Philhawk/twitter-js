@@ -4,7 +4,7 @@ var tweetBank = require('../tweetBank');
 
 router.get('/', function (req, res) {
   var tweets = tweetBank.list();
-  res.render( 'index', { tweets: tweets } );
+  res.render( 'index.html', { tweets: tweets } );
 });
 
 router.get('/users/:name', function(req, res) {
@@ -15,9 +15,7 @@ router.get('/users/:name', function(req, res) {
      return tweetObject['name'] === name;
   })
 
-  console.log('THIS IS THE PERSON BEHIND THE MAGIC', personBehindTweet)
-
-  res.render( 'usertweets', { personBehindTweet: personBehindTweet } );
+  res.render( 'usertweets.html', { personBehindTweet: personBehindTweet } );
 });
 
 router.get('/tweets/:id', function(req, res){
@@ -25,7 +23,7 @@ router.get('/tweets/:id', function(req, res){
   var tweetList = tweetBank.list();
   var theTweet = Array(tweetList[id]);
 
-  res.render( 'tweet', { theTweet : theTweet } );
+  res.render( 'tweet.html', { theTweet : theTweet } );
 });
 
 router.get('/stylesheets/style.css', function(req, res) {
