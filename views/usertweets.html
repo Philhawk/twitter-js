@@ -10,10 +10,23 @@
       <img src="https://pbs.twimg.com/profile_images/2450268678/olxp11gnt09no2y2wpsh_normal.jpeg"><br>
       {% for person in personBehindTweet %}
         <b>{{person.name}}</b>
-      {% endfor %}
       <br>
       100 followers
     </div>
+
+
+
+    <form action="/tweets" method="POST">
+      <label for="name_field">Name: </label>
+      <input name="name" value={{person.name}} type="text" id="name_field" />
+
+      <label for="text_field">Text:</label>
+      <input name="text" type="text" id="text_field" style="width: 350px;" />
+
+      <input type="submit" value="Submit" />
+    </form>
+    {% endfor %}
+
     <div class="col-md-9">
       <h2>User Tweets</h2>
       {% for person in personBehindTweet %}
