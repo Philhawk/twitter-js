@@ -1,26 +1,29 @@
 var express = require('express');
 var router = express.Router();
+var tweetBank = require('../tweetBank');
 
-var locals = {
-  title: 'LOTR Node App',
-  people: [
-    {name: 'Gandalf'},
-    {name: 'Frodo'},
-    {name: 'Legolas'}
-  ]
-}
 
-router.use(function timeLog(req, res, next) {
-  console.log('Time: ', Date.now());
-  next();
+router.get('/', function (req, res) {
+  var tweets = tweetBank.list();
+  res.render( 'index', { tweets: tweets } );
 });
-// define the home page route
-router.get('/', function(req, res) {
-  res.render('index.html', locals)
+
+// console.log(req)
+router.get('/stylesheets/style.css', function(req, res) {
+    var options = {
+    root: './public/'
+  };
+
+  res.sendFile('stylesheets/style.css', options, function (err) {
+    if (err) {
+      console.log(err);
+      res.status(err.status).end();
+    }
+    else {
+      console.log('Sent:', options, 'stylesheets/style.css');
+    }
+  });
 });
-// define the about route
-router.get('/news', function(req, res) {
-  res.send('News Page');
-  console.log('Visiting the news page');});
 
 module.exports = router;
+

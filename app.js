@@ -9,6 +9,7 @@ app.use(morgan('dev'))
 app.engine('html', nunjucks.render);
 
 app.use('/', twitter);
+app.use('/static', express.static('public'));
 
 nunjucks.configure('views', { noCache: true });
 
