@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+  <div class="page-header">
+    <h1>This is an individual tweet!</h1>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <img src="https://pbs.twimg.com/profile_images/2450268678/olxp11gnt09no2y2wpsh_normal.jpeg"><br>
+      <b>Nimit Maru</b><br>
+      100 followers
+    </div>
+    <div class="col-md-9">
+      <h2>Single Tweet</h2>
+      {% for tweet in theTweet %}
+        <li>{{tweet.content}}</li>
+      {% endfor %}
+    </div>
+
+  </div>
+
+{% endblock %}
