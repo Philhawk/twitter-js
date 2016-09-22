@@ -29,13 +29,11 @@ module.exports = function (io) {
   });
 
   router.post('/tweets', function(req, res) {
-    console.log('REQ', req.body);
     var name = req.body.name;
     var text = req.body.text;
-    console.log(name)
-    console.log(text)
-    id = Math.floor(Math.random() * 10000)
-    tweetBank.add(name, id, text);
+
+    var randomID = Math.floor(Math.random() * 10000);
+    tweetBank.add(name, randomID, text);
     res.redirect('/');
   });
 
